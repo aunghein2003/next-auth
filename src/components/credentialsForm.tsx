@@ -22,7 +22,7 @@ export default function CredentialsForm() {
     });
 
     if (signInResponse && !signInResponse.error) {
-      router.push("/dashboard");
+      router.push("/");
     } else {
       console.log("Error", signInResponse?.error);
       setError("Your email or password is wrong!");
@@ -35,7 +35,7 @@ export default function CredentialsForm() {
       className="w-full flex flex-col [&>input]:mb-3 [&>input]:p-3 [&>input]:bg-slate-100 [&>input]:rounded-md"
     >
       {error && (
-        <span className="w-full p-2 mb-2 rounded-md text-lg font-medium bg-red-500 text-white">
+        <span className="w-full p-2 mb-2 rounded-md text-lg font-[400] bg-red-500 text-white">
           {error}
         </span>
       )}

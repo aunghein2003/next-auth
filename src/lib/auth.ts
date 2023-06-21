@@ -1,8 +1,9 @@
-import { NextAuthOptions, User } from "next-auth";
+import { NextAuthOptions, User, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import { PrismaClient } from "@prisma/client";
+import { redirect } from "next/navigation";
 
 const prisma = new PrismaClient();
 
@@ -48,4 +49,15 @@ export const authOptions: NextAuthOptions = {
       return baseUrl;
     },
   },
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
+};
+
+export const loginIsRequired = async () => {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect("/login");
+  }
 };
