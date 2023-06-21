@@ -32,10 +32,10 @@ export default function CredentialsForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full flex flex-col gap-y-4 [&>input]:p-3 [&>input]:bg-slate-100 [&>input]:rounded-md"
+      className="w-full flex flex-col [&>input]:mb-3 [&>input]:p-3 [&>input]:bg-slate-100 [&>input]:rounded-md"
     >
       {error && (
-        <span className="w-full p-2 text-lg font-medium bg-red-500 text-white">
+        <span className="w-full p-2 mb-2 rounded-md text-lg font-medium bg-red-500 text-white">
           {error}
         </span>
       )}
